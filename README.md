@@ -1,23 +1,21 @@
-# HBA Python Project 🐍
+# Hospital Bed Management 🏥
 
-This is my second Python project, created using Python.
+Web version of my Python Hospital Bed Management project.
 
-## 📌 About the Project
+### Features
+- Login
+- Patient admission/discharge
+- 20-bed map
+- Free/occupied statistics
+- Patient records
+- CSV export
+- Browser local storage
 
-This project is created for learning and practicing Python programming.
+### Demo Login
+Username: `admin`
+Password: `1234`
 
-## 🛠️ Technology Used
+### GitHub Pages
+Upload all files to a GitHub repository and enable Pages from `main` → `/ (root)`.
 
-- Python 3
-- VS Code
-
-## ▶️ How to Run
-
-1. Install Python on your computer.
-2. Download or clone this repository.
-3. Open the project folder in VS Code.
-4. Open the terminal.
-5. Run:
-
-```bash
-python "2nd hba.py"
+**Note:** This is a student/demo project. Do not use real patient information or real passwords.

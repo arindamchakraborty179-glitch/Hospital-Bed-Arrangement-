@@ -1,0 +1,10 @@
+const USER="admin",PASS="1234",TOTAL=20;let data=JSON.parse(localStorage.getItem("hospitalData")||"[]"),selected=-1;
+function login(){if(u.value===USER&&p.value===PASS){loginDiv(false);render()}else err.textContent="Invalid username or password"}
+function loginDiv(show){document.getElementById("login").hidden=!show;document.getElementById("app").hidden=show}
+function logout(){loginDiv(true);u.value=p.value="";err.textContent=""}
+function admit(){let n=name.value.trim(),id=pid.value.trim(),w=ward.value;if(!n||!id||!w){msg.textContent="Enter Name, ID and Ward.";return}if(data.some(x=>x.id===id)){msg.textContent="Patient ID already exists.";return}let used=data.map(x=>x.bed),bed=Array.from({length:TOTAL},(_,i)=>i+1).find(x=>!used.includes(x));if(!bed){msg.textContent="No beds available.";return}data.push({n,id,w,bed});save();name.value=pid.value="";ward.value="";msg.textContent="Patient admitted successfully.";render()}
+function discharge(){if(selected<0){msg.textContent="Select a patient row first.";return}data.splice(selected,1);selected=-1;save();msg.textContent="Patient discharged successfully.";render()}
+function save(){localStorage.setItem("hospitalData",JSON.stringify(data))}
+function render(){total.textContent=TOTAL;free.textContent=TOTAL-data.length;occ.textContent=data.length;rows.innerHTML=data.map((x,i)=>`<tr onclick="selected=${i};render()"><td>${safe(x.n)}</td><td>${safe(x.id)}</td><td>${safe(x.w)}</td><td>${x.bed}</td></tr>`).join("");beds.innerHTML=Array.from({length:TOTAL},(_,i)=>{let b=i+1,t=data.some(x=>x.bed===b);return `<div class="bed ${t?"taken":""}">${b}</div>`}).join("")}
+function safe(x){return String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function csv(){let s="Name,ID,Ward,Bed\n"+data.map(x=>[x.n,x.id,x.w,x.bed].map(v=>`"${String(v).replaceAll('"','""')}"`).join(",")).join("\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob([s],{type:"text/csv"}));a.download="hospital-bed-report.csv";a.click()}
