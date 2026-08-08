@@ -1,9 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Hospital Bed Management</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,63 +13,103 @@
 
 <div id="app">
 
-<header>
-<h1>🏥 Hospital Bed Management</h1>
-</header>
+    <h1>Hospital Bed Management</h1>
 
-<main>
+    <!-- Statistics -->
+    <div class="stats">
 
-<div class="stats">
-<b>Total Beds<br>
-<span id="total">20</span>
-</b>
+        <div class="stat total">
+            <b>Total Beds</b>
+            <span id="total">20</span>
+        </div>
 
-<b>Free Beds<br>
-<span id="free">20</span>
-</b>
+        <div class="stat free">
+            <b>Free Beds</b>
+            <span id="free">20</span>
+        </div>
+
+        <div class="stat occupied">
+            <b>Occupied</b>
+            <span id="occupied">0</span>
+        </div>
+
+    </div>
+
+
+    <!-- Patient Admission -->
+    <div class="admission">
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Patient Name"
+        >
+
+        <input
+            id="pid"
+            type="text"
+            placeholder="Patient ID"
+        >
+
+        <select id="ward">
+            <option value="Emergency">Emergency</option>
+            <option value="General">General</option>
+            <option value="ICU">ICU</option>
+            <option value="Cabin">Cabin</option>
+        </select>
+
+        <button class="admit" onclick="admit()">
+            Admit
+        </button>
+
+        <button class="discharge" onclick="discharge()">
+            Discharge
+        </button>
+
+    </div>
+
+
+    <!-- Patient Records -->
+    <section>
+
+        <div class="section-title">
+            <h2>Patient Records</h2>
+
+            <button class="export" onclick="csv()">
+                Export Report
+            </button>
+        </div>
+
+        <table id="records">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Patient ID</th>
+                    <th>Ward</th>
+                    <th>Bed</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- Bed Map -->
+    <section>
+
+        <h2>Bed Map</h2>
+
+        <div id="beds" class="beds"></div>
+
+    </section>
+
 </div>
 
-<section>
-<h2>Patient Admission</h2>
-
-<input id="name" placeholder="Patient Name">
-<input id="pid" placeholder="Patient ID">
-<input id="ward" placeholder="Ward">
-
-<button onclick="admit()">Admit Patient</button>
-<button onclick="discharge()">Discharge Patient</button>
-
-<p id="msg"></p>
-</section>
-
-<section>
-<h2>Patient Records</h2>
-
-<button class="export" onclick="csv()">Export Report</button>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Patient ID</th>
-<th>Ward</th>
-<th>Bed</th>
-</tr>
-</thead>
-
-<tbody id="rows"></tbody>
-</table>
-
-</section>
-
-<section>
-<h2>Bed Map</h2>
-<div id="beds" class="beds"></div>
-</section>
-
-</main>
-
-</div>
 
 <script src="app.js"></script>
 
