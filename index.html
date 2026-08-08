@@ -2,7 +2,7 @@
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hospital Bed Management</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<div id="login" class="login"><div class="box"><h1>🏥 Hospital Bed Management</h1><input id="u" placeholder="Username"><input id="p" type="password" placeholder="Password"><button onclick="login()">Login</button><p id="err"></p></div></div>
+<div id="login" class="login"><div class="box"><h1>🏥 Hospital Bed Management</h1><input id="u" placeholder="Username"><input id="p" type="password" placeholder="Password"><button onclick="dologin()">Login</button><p id="err"></p></div></div>
 <div id="app" hidden><header><h1>Hospital Bed Management 🏥</h1><button onclick="logout()">Logout</button></header>
 <main><div class="stats"><b>Total Beds<br><span id="total">20</span></b><b>Free Beds<br><span id="free">20</span></b><b>Occupied<br><span id="occ">0</span></b></div>
 <section><h2>Patient Admission</h2><input id="name" placeholder="Patient Name"><input id="pid" placeholder="Patient ID"><select id="ward"><option value="">Select Ward</option><option>ICU</option><option>General</option><option>Emergency</option></select><button onclick="admit()">Admit</button><button class="red" onclick="discharge()">Discharge Selected</button><p id="msg"></p></section>
