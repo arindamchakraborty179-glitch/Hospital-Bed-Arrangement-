@@ -1,1 +1,177 @@
-*{box-sizing:border-box}body{margin:0;background:#10151c;color:white;font-family:Arial}header{padding:20px 6%;background:#19232e;display:flex;justify-content:space-between;align-items:center}button{border:0;border-radius:7px;padding:11px 17px;margin:5px;background:#16a8e8;color:white;font-weight:bold;cursor:pointer}.red{background:#d94242}.export{float:right;background:#eee;color:#111}.login{min-height:100vh;display:grid;place-items:center;background:#172532}.box{width:min(400px,90%);padding:30px;background:#1d2833;border-radius:15px;text-align:center}.box input,.box button{width:100%;margin:7px 0}input,select{padding:12px;border-radius:7px;border:1px solid #44515e;background:#111820;color:white;margin:5px}.box p{color:#ff7777}main{max-width:1000px;margin:auto;padding:25px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.stats b{padding:20px;text-align:center;border-radius:10px;background:#168fcb}.stats b:nth-child(2){background:#21a957}.stats b:nth-child(3){background:#d94242}.stats span{font-size:30px}section{background:#1b252f;margin:20px 0;padding:20px;border-radius:12px}table{width:100%;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid #394552;text-align:left}tr:hover{background:#244053;cursor:pointer}.beds{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}.bed{padding:13px;text-align:center;background:#21a957;border-radius:6px}.taken{background:#d94242}@media(max-width:650px){.stats{grid-template-columns:1fr}.beds{grid-template-columns:repeat(5,1fr)}input,select{width:100%;margin:5px 0}}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #101820;
+    color: white;
+}
+
+#app {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+
+/* Statistics */
+
+.stats {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat b {
+    display: block;
+    font-size: 18px;
+}
+
+.stat span {
+    display: block;
+    font-size: 28px;
+    margin-top: 8px;
+}
+
+.total {
+    background: #08a9d8;
+}
+
+.free {
+    background: #16c95b;
+}
+
+.occupied {
+    background: #ef2525;
+}
+
+
+/* Admission */
+
+.admission {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+input,
+select {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.admit {
+    background: #16c95b;
+    color: white;
+}
+
+.discharge {
+    background: #ef2525;
+    color: white;
+}
+
+
+/* Patient Records */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.export {
+    background: white;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    margin-top: 10px;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #eeeeee;
+}
+
+
+/* Bed Map */
+
+.beds {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.bed {
+    padding: 14px 5px;
+    text-align: center;
+    border-radius: 5px;
+    background: #16c95b;
+    color: white;
+    font-weight: bold;
+}
+
+.bed.occupied {
+    background: #ef2525;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .admission {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .beds {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+}
