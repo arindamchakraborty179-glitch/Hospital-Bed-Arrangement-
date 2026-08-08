@@ -9,47 +9,66 @@ body {
     color: white;
 }
 
+/* Main Dashboard */
 #app {
-    width: 90%;
-    max-width: 1100px;
-    margin: 30px auto;
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 28px 35px 40px;
 }
 
-h1 {
-    text-align: center;
-    font-size: 38px;
-    margin-bottom: 30px;
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
 }
 
-h2 {
-    margin-top: 30px;
+header h1 {
+    margin: 0;
+    font-size: 32px;
 }
 
+/* Buttons */
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
 
 /* Statistics */
-
 .stats {
-    display: flex;
-    gap: 25px;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
 }
 
 .stat {
-    flex: 1;
-    padding: 20px;
+    padding: 18px;
     border-radius: 8px;
     text-align: center;
+    min-height: 82px;
 }
 
 .stat b {
     display: block;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .stat span {
     display: block;
-    font-size: 28px;
-    margin-top: 8px;
+    font-size: 26px;
+    margin-top: 6px;
+    font-weight: bold;
 }
 
 .total {
@@ -64,78 +83,88 @@ h2 {
     background: #ef2525;
 }
 
-
 /* Admission */
-
 .admission {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 input,
 select {
     padding: 12px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border: 1px solid #56606b;
+    border-radius: 5px;
+    background: #18232d;
+    color: white;
     font-size: 15px;
+    outline: none;
 }
 
-.admit {
-    background: #16c95b;
+input::placeholder {
+    color: #aeb7bf;
+}
+
+input:focus,
+select:focus {
+    border-color: #08a9d8;
+}
+
+.admission button {
+    background: #08a9d8;
     color: white;
 }
 
-.discharge {
+.admission button:nth-of-type(2) {
     background: #ef2525;
-    color: white;
 }
 
-
-/* Patient Records */
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Sections */
+section {
+    margin-top: 25px;
 }
 
+section h2 {
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+/* Export button */
 .export {
     background: white;
-    color: black;
+    color: #222;
+    float: right;
+    margin-top: -48px;
 }
 
+/* Patient Records */
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    color: black;
+    background: #18232d;
     margin-top: 10px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+th {
+    background: #263541;
+    color: white;
 }
 
 th,
 td {
-    padding: 14px;
+    padding: 13px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #3b4852;
 }
 
-th {
-    background: #eeeeee;
+tbody tr:hover {
+    background: #202e39;
 }
-
 
 /* Bed Map */
-
 .beds {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -144,34 +173,74 @@ th {
 }
 
 .bed {
-    padding: 14px 5px;
+    padding: 13px 5px;
+    border-radius: 6px;
     text-align: center;
-    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
     background: #16c95b;
     color: white;
-    font-weight: bold;
+}
+
+.bed:hover {
+    transform: translateY(-1px);
 }
 
 .bed.occupied {
     background: #ef2525;
 }
 
+/* Message */
+#msg {
+    margin: 10px 0;
+    color: #ffd166;
+    font-weight: bold;
+}
 
-/* Mobile */
+/* Login - hidden because dashboard opens directly */
+#login {
+    display: none !important;
+}
 
-@media (max-width: 700px) {
+/* Responsive */
+@media (max-width: 800px) {
+
+    #app {
+        padding: 20px;
+    }
 
     .stats {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .admission {
-        flex-direction: column;
-        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    input,
+    select {
+        flex: 1;
+        min-width: 150px;
     }
 
     .beds {
         grid-template-columns: repeat(5, 1fr);
     }
+}
 
+@media (max-width: 500px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .beds {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 13px;
+    }
 }
