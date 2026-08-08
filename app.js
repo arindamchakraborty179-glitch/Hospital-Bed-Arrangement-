@@ -5,7 +5,7 @@ const TOTAL = 20;
 let data = JSON.parse(localStorage.getItem("hospitalData") || "[]");
 let selected = -1;
 
-function login() {
+function dologin() {
   const username = document.getElementById("u").value.trim();
   const password = document.getElementById("p").value;
 
