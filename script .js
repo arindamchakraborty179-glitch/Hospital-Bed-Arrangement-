@@ -1,5 +1,15 @@
 const USER="admin",PASS="1234",TOTAL=20;let data=JSON.parse(localStorage.getItem("hospitalData")||"[]"),selected=-1;
-function login(){if(u.value===USER&&p.value===PASS){loginDiv(false);render()}else err.textContent="Invalid username or password"}
+function login(){
+    const username = document.getElementById("u").value;
+    const password = document.getElementById("p").value;
+
+    if(username === USER && password === PASS){
+        loginDiv(false);
+        render();
+    } else {
+        document.getElementById("err").textContent = "Invalid username or password";
+    }
+}
 function loginDiv(show){document.getElementById("login").hidden=!show;document.getElementById("app").hidden=show}
 function logout(){loginDiv(true);u.value=p.value="";err.textContent=""}
 function admit(){let n=name.value.trim(),id=pid.value.trim(),w=ward.value;if(!n||!id||!w){msg.textContent="Enter Name, ID and Ward.";return}if(data.some(x=>x.id===id)){msg.textContent="Patient ID already exists.";return}let used=data.map(x=>x.bed),bed=Array.from({length:TOTAL},(_,i)=>i+1).find(x=>!used.includes(x));if(!bed){msg.textContent="No beds available.";return}data.push({n,id,w,bed});save();name.value=pid.value="";ward.value="";msg.textContent="Patient admitted successfully.";render()}
