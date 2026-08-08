@@ -19,7 +19,7 @@ function login() {
             "Invalid username or password";
     }
 }
-
+window.login = login:
 function loginDiv(show) {
     document.getElementById("login").hidden = !show;
     document.getElementById("app").hidden = show;
